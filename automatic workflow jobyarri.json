@@ -1,0 +1,849 @@
+{
+  "name": "job yarrri  24",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        352,
+        -80
+      ],
+      "id": "fa4d4daa-c9fa-47ac-9781-04f1c1c8bda7",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://serpapi.com/search",
+        "options": {},
+        "queryParametersUi": {
+          "parameter": [
+            {
+              "name": "engine",
+              "value": "google_trends_trending_now"
+            },
+            {
+              "name": "api_key",
+              "value": "20a1a8064fa6f38fb854524ca601d7275bc222fb151b4aeb0167c60cbccd0b0e"
+            },
+            {
+              "name": "geo",
+              "value": "IN"
+            },
+            {
+              "name": "hl",
+              "value": "en"
+            }
+          ]
+        }
+      },
+      "name": "Fetch SerpApi Trending Now",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        656,
+        -80
+      ],
+      "id": "eec8963a-d168-4a14-8723-304e8e897a94"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.myNewField = 1;\n}\n\nreturn $input.all();"
+      },
+      "name": "Extract Trends from SerpApi",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        912,
+        -80
+      ],
+      "id": "beb920bc-f64a-4fc6-a64c-1689c0b0bd0c"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1Jvpxa_9W33bOF1yHPZObpKY2j4P5gR22kv57fePsxKg",
+          "mode": "list",
+          "cachedResultName": "Automation Sheet_Ramakant_Sahu",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Jvpxa_9W33bOF1yHPZObpKY2j4P5gR22kv57fePsxKg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Jvpxa_9W33bOF1yHPZObpKY2j4P5gR22kv57fePsxKg/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "status": "={{ $json.status }}",
+            "Idea Generation": "={{ $json.idea_generation }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "Idea Generation",
+              "displayName": "Idea Generation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "GPT 1",
+              "displayName": "GPT 1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "GPT 2",
+              "displayName": "GPT 2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Youtube Reel Link",
+              "displayName": "Youtube Reel Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Instagram Post Content",
+              "displayName": "Instagram Post Content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Blog Link",
+              "displayName": "Blog Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Youtube Thumbnail Link",
+              "displayName": "Youtube Thumbnail Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "jobs_results",
+              "displayName": "jobs_results",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "serpapi_pagination",
+              "displayName": "serpapi_pagination",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "trending_searches",
+              "displayName": "trending_searches",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "data",
+              "displayName": "data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "search_metadata",
+              "displayName": "search_metadata",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "search_parameters",
+              "displayName": "search_parameters",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "myNewField",
+              "displayName": "myNewField",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1344,
+        -80
+      ],
+      "id": "266c4638-8661-40d0-9aad-e6cd0991f4f8",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FwW7FEgKI5j4MUdd",
+          "name": "Google Sheets account 9"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get all trending searches from input\nconst searches = $json.trending_searches || [];\n\n// Filter only \"Law and Government\"\nconst filtered = searches.filter(item => \n  item.categories?.some(c => c.name === \"Jobs and Education\")\n);\n\n// Map only needed fields for sheet\nreturn filtered.map(item => ({\n  idea_generation: item.query,\n  category: item.categories[0]?.name || \"N/A\",\n  status: item.active ? \"active\" : \"inactive\"\n}));\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        -80
+      ],
+      "id": "b21c2e89-f126-4364-945c-cd13deb4d68e",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.5-flash-lite-preview-06-17",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.5-flash-lite-preview-06-17"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=You are an AI classifier. \n\nAllowed categories:\n- Admit Card\n- Job Notification\n- Result\n- Not Relevant\ninput data : {{ $json['Idea Generation'] }}\n\nTask:\nClassify each query into exactly ONE of the allowed categories.\n\nTake the previous node google sheet output and take Idea Generation columns data and then extract category which abobve mention\n\n\n         \n\n\n\n\n\n"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        -80
+      ],
+      "id": "c6b3f698-d8f6-4942-8c17-5c03def12ea9",
+      "name": "Message a model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "9B9j4mwa32ymxOGa",
+          "name": "Google Gemini(PaLM) Api account 8"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code node (JavaScript) - improved extractor for Gemini-like outputs\n\nconst inputs = $input.all();\nlet responses = [];\n\n// flatten inputs\nfor (const it of inputs) {\n  if (it.json) responses.push(it.json);\n}\n\n// helper: collect text from multiple shapes\nfunction extractAllText(obj) {\n  if (!obj) return [];\n  let out = [];\n\n  if (typeof obj === \"string\") {\n    out.push(obj);\n  }\n  if (obj.text) {\n    out.push(obj.text);\n  }\n  if (obj.parts) {\n    for (const p of obj.parts) {\n      if (p.text) out.push(p.text);\n    }\n  }\n  if (obj.content?.parts) {\n    for (const p of obj.content.parts) {\n      if (p.text) out.push(p.text);\n    }\n  }\n\n  return out;\n}\n\nfunction tryParseJson(str) {\n  try { return JSON.parse(str); } catch (e) { return null; }\n}\n\nfunction normalizeParsed(parsed) {\n  let out = [];\n  if (Array.isArray(parsed)) {\n    for (const el of parsed) {\n      if (typeof el === \"string\") {\n        out.push({ query: null, category: el });\n      } else if (typeof el === \"object\" && el !== null) {\n        out.push({\n          query: el.query || el.input_data || el[\"input data\"] || null,\n          category: el.category || el.classification || el[\"Classify into\"] || null\n        });\n      }\n    }\n  } else if (typeof parsed === \"object\") {\n    out.push({\n      query: parsed.query || parsed.input_data || parsed[\"input data\"] || null,\n      category: parsed.category || parsed.classification || parsed[\"Classify into\"] || null\n    });\n  }\n  return out;\n}\n\nconst results = [];\n\nfor (const resp of responses) {\n  const texts = extractAllText(resp);\n  for (const raw0 of texts) {\n    const raw = raw0.replace(/```json|```/g, \"\").trim();\n    let parsed = tryParseJson(raw);\n\n    if (!parsed) {\n      const first = raw.indexOf(\"[\");\n      const last = raw.lastIndexOf(\"]\");\n      if (first !== -1 && last > first) {\n        parsed = tryParseJson(raw.slice(first, last + 1));\n      }\n    }\n\n    if (parsed) {\n      results.push(...normalizeParsed(parsed));\n    }\n  }\n}\n\n// dedupe\nconst seen = new Set();\nconst final = [];\nfor (const r of results) {\n  const key = `${r.query ?? \"\"}|||${r.category ?? \"\"}`;\n  if (!seen.has(key)) {\n    seen.add(key);\n    final.push(r);\n  }\n}\n\nreturn final.map(r => ({ json: r }));\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2048,
+        -96
+      ],
+      "id": "50cbe58e-12f9-40bc-9f62-2b0e74823280",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1Jvpxa_9W33bOF1yHPZObpKY2j4P5gR22kv57fePsxKg",
+          "mode": "list",
+          "cachedResultName": "Automation Sheet_Ramakant_Sahu",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Jvpxa_9W33bOF1yHPZObpKY2j4P5gR22kv57fePsxKg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Jvpxa_9W33bOF1yHPZObpKY2j4P5gR22kv57fePsxKg/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "GPT 1": "={{ $json.category }}",
+            "Idea Generation": "={{ $json.query }}"
+          },
+          "matchingColumns": [
+            "Idea Generation"
+          ],
+          "schema": [
+            {
+              "id": "Idea Generation",
+              "displayName": "Idea Generation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "GPT 1",
+              "displayName": "GPT 1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "GPT 2",
+              "displayName": "GPT 2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Youtube Reel Link",
+              "displayName": "Youtube Reel Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Instagram Post Content",
+              "displayName": "Instagram Post Content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Blog Link",
+              "displayName": "Blog Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Youtube Thumbnail Link",
+              "displayName": "Youtube Thumbnail Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "jobs_results",
+              "displayName": "jobs_results",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "serpapi_pagination",
+              "displayName": "serpapi_pagination",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "trending_searches",
+              "displayName": "trending_searches",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "data",
+              "displayName": "data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "search_metadata",
+              "displayName": "search_metadata",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "search_parameters",
+              "displayName": "search_parameters",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "myNewField",
+              "displayName": "myNewField",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        2320,
+        -80
+      ],
+      "id": "5e21df66-c437-4fc4-80bc-ebeccf90ba2a",
+      "name": "Append or update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FwW7FEgKI5j4MUdd",
+          "name": "Google Sheets account 9"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.5-flash-lite",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.5-flash-lite"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=You are a content creator assistant.\n\nInput:\n- Query: {{ $json[\"Idea Generation\"] }}\n- Category: {{ $json[\"GPT 1\"] }}\n\nRules:\n1. Only generate content if Category is one of: \"Admit Card\", \"Job Notification\", \"Result\".\n2. If Category is \"Not Relevant\", return this exact JSON only:\n{\n  \"query\": \"{{ $json[\"Idea Generation\"] }}\",\n  \"category\": \"Not Relevant\",\n  \"instagram_post\": \"\",\n  \"blog_draft\": \"\",\n  \"youtube_reel\": \"\",\n  \"youtube_thumbnails\": []\n}\n\n3. If Category is \"Admit Card\", \"Job Notification\", or \"Result\":\n   - Always return **non-empty strings/arrays**.\n   - Never use null or leave arrays empty.\n   - Format must be valid JSON only (no markdown, no text outside JSON).\n\nTasks:\n- instagram_post → Short caption + 3-5 hashtags.\n- blog_draft → \n   {\n     \"title\": \"...\",\n     \"content\": \"2-3 paragraphs\",\n     \"link\": \"[Admit Card Download Link]\" OR \"[Application Link]\" OR \"[Result Link]\"\n   }\n- youtube_reel → 1-liner + hashtags.\n- youtube_thumbnails → 3 catchy thumbnail texts in an array.\n\nOutput format example:\n{\n  \"query\": \"rrb ntpc\",\n  \"category\": \"Job Notification\",\n  \"instagram_post\": \"Big update! RRB NTPC vacancies are out 🚨 #RRB #Jobs #NTPC\",\n  \"blog_draft\": {\n    \"title\": \"RRB NTPC 2025 Notification Released\",\n    \"content\": \"Full article text...\",\n    \"link\": \"[Application Link]\"\n  },\n  \"youtube_reel\": \"RRB NTPC jobs are here! 🚆 Apply now #RRB #Jobs\",\n  \"youtube_thumbnails\": [\n    \"RRB NTPC Jobs 2025!\",\n    \"Apply for NTPC Now\",\n    \"RRB Vacancy Alert 🚨\"\n  ]\n}\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "position": [
+        2560,
+        -80
+      ],
+      "id": "a2a2cccf-028c-4737-b393-96045cc48536",
+      "name": "Message a model1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "UswHKBnDOsoVEHJt",
+          "name": "Google Gemini(PaLM) Api account 7"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1Jvpxa_9W33bOF1yHPZObpKY2j4P5gR22kv57fePsxKg",
+          "mode": "list",
+          "cachedResultName": "Automation Sheet_Ramakant_Sahu",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Jvpxa_9W33bOF1yHPZObpKY2j4P5gR22kv57fePsxKg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Jvpxa_9W33bOF1yHPZObpKY2j4P5gR22kv57fePsxKg/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Idea Generation": "=\n\n{{ $json.query }}",
+            "Youtube Thumbnail Link": "={{ $json.youtube_thumbnails }}",
+            "Youtube Reel Link": "={{ $json.youtube_reel }}",
+            "Instagram Post Content": "={{ $json.instagram_post }}",
+            "Blog Link": "={{ $json.blog_link }}"
+          },
+          "matchingColumns": [
+            "Idea Generation"
+          ],
+          "schema": [
+            {
+              "id": "Idea Generation",
+              "displayName": "Idea Generation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "GPT 1",
+              "displayName": "GPT 1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "GPT 2",
+              "displayName": "GPT 2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Youtube Reel Link",
+              "displayName": "Youtube Reel Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Instagram Post Content",
+              "displayName": "Instagram Post Content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Blog Link",
+              "displayName": "Blog Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Youtube Thumbnail Link",
+              "displayName": "Youtube Thumbnail Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "jobs_results",
+              "displayName": "jobs_results",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "serpapi_pagination",
+              "displayName": "serpapi_pagination",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "trending_searches",
+              "displayName": "trending_searches",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "data",
+              "displayName": "data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "search_metadata",
+              "displayName": "search_metadata",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "search_parameters",
+              "displayName": "search_parameters",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "myNewField",
+              "displayName": "myNewField",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        3232,
+        -80
+      ],
+      "id": "561381c2-76f9-48d4-acba-4aa26c90d141",
+      "name": "Append or update row in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FwW7FEgKI5j4MUdd",
+          "name": "Google Sheets account 9"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst results = [];\n\nfunction normalize(parsed) {\n  // If it's an array, return multiple entries\n  if (Array.isArray(parsed)) {\n    return parsed;\n  }\n  // Otherwise, wrap object as array\n  return [parsed];\n}\n\nfor (const item of items) {\n  try {\n    const rawText = item.json?.content?.parts?.[0]?.text;\n    if (!rawText) continue;\n\n    const cleaned = rawText.replace(/```json|```/g, \"\").trim();\n    const parsed = JSON.parse(cleaned);\n\n    for (const obj of normalize(parsed)) {\n      // Skip \"Not Relevant\"\n      if (obj.category === \"Not Relevant\") continue;\n\n      const row = {\n        query: obj.query || null,\n        instagram_post: Array.isArray(obj.instagram_post)\n          ? obj.instagram_post.join(\"; \")\n          : obj.instagram_post || null,\n        blog_title: Array.isArray(obj.blog_draft)\n          ? obj.blog_draft.map(d => d.title).join(\"; \")\n          : obj.blog_draft?.title || null,\n        blog_content: Array.isArray(obj.blog_draft)\n          ? obj.blog_draft.map(d => d.content).join(\"; \")\n          : obj.blog_draft?.content || null,\n        blog_link: Array.isArray(obj.blog_draft)\n          ? obj.blog_draft.map(d => d.link).join(\"; \")\n          : obj.blog_draft?.link || null,\n        youtube_reel: Array.isArray(obj.youtube_reel)\n          ? obj.youtube_reel.join(\"; \")\n          : obj.youtube_reel || null,\n        youtube_thumbnails: Array.isArray(obj.youtube_thumbnails)\n          ? obj.youtube_thumbnails.join(\"; \")\n          : obj.youtube_thumbnails || null\n      };\n\n      results.push({ json: row });\n    }\n  } catch (err) {\n    console.error(\"Parse error:\", err, item.json);\n  }\n}\n\nreturn results;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2976,
+        -80
+      ],
+      "id": "e28b5332-a622-4ff1-ab61-fcc8e57457b2",
+      "name": "Code in JavaScript2"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Fetch SerpApi Trending Now",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch SerpApi Trending Now": {
+      "main": [
+        [
+          {
+            "node": "Extract Trends from SerpApi",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Trends from SerpApi": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Append or update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append or update row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Message a model1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model1": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript2": {
+      "main": [
+        [
+          {
+            "node": "Append or update row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "3e4a6515-583d-4576-b288-5b315d738cfd",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "9f265508a336a5beca2e93d0517399fb25a267040625321b28b423b904bef1e7"
+  },
+  "id": "6Ck6c8w5bfQJa2ua",
+  "tags": []
+}
